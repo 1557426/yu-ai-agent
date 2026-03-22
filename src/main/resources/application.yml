@@ -3,22 +3,22 @@ spring:
     name: yu-ai-agent
   profiles:
     active: local
-# 临时注释掉，便于大家开发调试和部署（实际填写 PgVector 数据库信息）
-#  datasource:
-#    url: xxx
-#    username: root
-#    password: 123456
+  datasource:
+    url: jdbc:postgresql://192.168.170.131:5432/yu_ai_db
+    username: root
+    password: 123456
+    driver-class-name: org.postgresql.Driver
   ai:
     dashscope:
       # 需要替换为你自己的 key
-      api-key: your-api-key
+      api-key: sk-29517fc6663d4610904439b468a28d19
       chat:
         options:
           model: qwen-plus
     ollama:
       base-url: http://localhost:11434
       chat:
-        model: gemma3:1b
+        model: qwen2.5:0.5b
 # 临时注释掉，便于大家开发调试和部署（实际需要启动 MCP 服务）
 #    mcp:
 #      client:
@@ -28,13 +28,13 @@ spring:
 #              url: http://localhost:8127
 #        stdio:
 #          servers-configuration: classpath:mcp-servers.json
-# 临时注释掉，便于大家开发调试和部署（实际需要启动 PgVector 数据库）
-#    vectorstore:
-#      pgvector:
-#        index-type: HNSW
-#        dimensions: 1536
-#        distance-type: COSINE_DISTANCE
-#        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+# 配置 PgVector 向量数据库
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        dimensions: 1536
+        distance-type: COSINE_DISTANCE
+        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
 server:
   port: 8123
   servlet:
@@ -59,7 +59,7 @@ knife4j:
 # searchAPI
 search-api:
   # 需要替换为你自己的 key
-  api-key: 你的 API Key
+  api-key: YsVRgHLfjjPT9iZgkPGqXcPa
 # 修改日志级别，查看 Spring AI 更多调用细节
 logging:
   level:

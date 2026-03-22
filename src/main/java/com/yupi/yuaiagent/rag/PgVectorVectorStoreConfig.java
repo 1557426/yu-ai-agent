@@ -14,7 +14,8 @@ import java.util.List;
 import static org.springframework.ai.vectorstore.pgvector.PgVectorStore.PgDistanceType.COSINE_DISTANCE;
 import static org.springframework.ai.vectorstore.pgvector.PgVectorStore.PgIndexType.HNSW;
 
-// 为方便开发调试和部署，临时注释，如果需要使用 PgVector 存储知识库，取消注释即可
+// 使用 PgVector 向量数据库存储知识库
+// 注意：如果不需要使用 PgVector，可以注释掉 @Configuration 注解
 //@Configuration
 public class PgVectorVectorStoreConfig {
 
